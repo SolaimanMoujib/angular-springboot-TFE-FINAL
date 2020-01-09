@@ -1,0 +1,14 @@
+<div class="button-group">
+  <button type="button" class="button btn btn-primary btn-lg" (click)="setPageCategory('products')">Products</button>
+  <button type="button" class="button btn btn-secondary btn-lg" (click)="setPageCategory('users')">Users</button>
+  <button type="button" class="button btn btn-secondary btn-lg" (click)="setPageCategory('others')">Others</button>
+</div>
+<div>
+  <app-admin-product-list *ngIf="pageCategory == 'products'"></app-admin-product-list>
+  <app-admin-customer-list *ngIf="pageCategory == 'users'"></app-admin-customer-list>
+  <div *ngIf="pageCategory == 'others'" class="list-lists">
+    <app-admin-discount-list class="list-crud"></app-admin-discount-list>
+    <app-admin-subcategory-list></app-admin-subcategory-list>
+    <app-admin-country-list></app-admin-country-list>
+  </div>
+</div>

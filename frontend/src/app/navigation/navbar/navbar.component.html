@@ -1,0 +1,20 @@
+<div class="menu-header">
+  <div class="logo">
+    <a [routerLink]="['/']"><img src="../../../assets/logo/logo.jpg" alt="logo" style="width: 170px; height: 100px"></a>
+  </div>
+  <div class="menu-links">
+    <a [routerLink]="['/products', 'men']">Men</a>
+    <a [routerLink]="['/products', 'women']">Women</a>
+    <a [routerLink]="['/products', 'supplements']">Supplements</a>
+    <a [routerLink]="['/products', 'accessories']">Accessories</a>
+    <a [routerLink]="['/adminPage']">Admin</a>
+  </div>
+  <div class="right-icons">
+    <button mat-button [routerLink]="'/shoppingCart'">
+      <mat-icon>add_shopping_cart</mat-icon>
+    </button>
+    <button mat-button [routerLink]="'/accountPage'">
+      <mat-icon>account_circle</mat-icon>
+    </button>
+  </div>
+</div>

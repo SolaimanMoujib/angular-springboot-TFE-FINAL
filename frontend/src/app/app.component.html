@@ -1,0 +1,13 @@
+<div class="mat-app-background basic-container">
+  <mat-sidenav-container>
+    <mat-sidenav [(opened)]="opened" position="end">
+      LE PANIER
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <app-navbar></app-navbar>
+      <router-outlet></router-outlet>
+      <app-shopping-cart></app-shopping-cart>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
+

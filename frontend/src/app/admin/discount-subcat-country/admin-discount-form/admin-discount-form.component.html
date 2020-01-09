@@ -1,0 +1,30 @@
+<mat-toolbar>
+  <span>{{service.form.controls['id'].value ? "Modify Discount" : "Create Discount"}}</span>
+  <button class="close-button" mat-stroked-button (click)="onClose()">
+    <mat-icon>clear</mat-icon>
+  </button>
+</mat-toolbar>
+<form [formGroup]="service.form">
+  <mat-grid-list cols="1" rowHeight="300px">
+    <mat-grid-tile>
+      <div>
+        <input type="hidden" formControlName="id">
+        <mat-form-field>
+          <input formControlName="code" matInput placeholder="Code*">
+          <!--          TODO: Change validators here-->
+          <mat-error *ngIf="service.form.controls['code'].errors?.min">This field is mandatory</mat-error>
+          <mat-error *ngIf="service.form.controls['code'].errors?.max">Minimum 3 characters needed</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input formControlName="percentage" matInput placeholder="Percentage*">
+          <mat-error *ngIf="service.form.controls['percentage'].errors?.min">Put a number higher than 0</mat-error>
+          <mat-error *ngIf="service.form.controls['percentage'].errors?.max">Put a number lower than 100</mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <button mat-raised-button color="primary" type="submit" [disabled]="service.form.invalid">Submit</button>
+        <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</form>

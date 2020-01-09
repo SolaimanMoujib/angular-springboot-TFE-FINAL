@@ -1,0 +1,53 @@
+<mat-toolbar>
+  <span>{{service.form.controls['id'].value ? "Modify Product" : "Create Product"}}</span>
+  <button class="close-button" mat-stroked-button (click)="onClose()">
+    <mat-icon>clear</mat-icon>
+  </button>
+</mat-toolbar>
+<form [formGroup]="service.form">
+  <mat-grid-list cols="2" rowHeight="300px">
+    <mat-grid-tile>
+      <div>
+        <input type="hidden" formControlName="id">
+        <mat-form-field>
+          <input formControlName="name" matInput placeholder="Name*">
+          <mat-error *ngIf="service.form.controls['name'].errors?.required">This field is mandatory</mat-error>
+          <mat-error *ngIf="service.form.controls['name'].errors?.minlength">Minimum 3 characters needed</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input formControlName="price" matInput placeholder="Price*">
+          <mat-error>This field is mandatory</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input formControlName="description" matInput placeholder="Description">
+        </mat-form-field>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <div>
+        <mat-form-field>
+          <mat-select formControlName="category" placeholder="Category*">
+            <mat-option>None</mat-option>
+            <ng-container *ngFor="let category of categories">
+              <mat-option value="{{category.id}}">{{category.value}}</mat-option>
+              <mat-error>This field is mandatory</mat-error>
+            </ng-container>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-select formControlName="subcategory" placeholder="Sub category">
+            <mat-option>None</mat-option>
+            <ng-container *ngFor="let subcategory of subcategories">
+              <mat-option value="{{subcategory.id}}">{{subcategory.value}}</mat-option>
+              <mat-error>This field is mandatory</mat-error>
+            </ng-container>
+          </mat-select>
+        </mat-form-field>
+        <div>
+          <button mat-raised-button color="primary" type="submit" [disabled]="service.form.invalid">Submit</button>
+          <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
+        </div>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</form>
